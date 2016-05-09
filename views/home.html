@@ -26,7 +26,7 @@
 					<h2 class='text-center' style="color: yellow">Eat dat Burger!</h2>
 				</div>
 				<div class="panel-body">
-					<ul id="edibleBurgers"></ul>
+					<ul id="edibleBurgers" class="list-group"></ul>
 				</div>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 					<h2 class='text-center' style="color: yellow">Devoured Burgers</h2>
 				</div>
 				<div class="panel-body">
-					<ul id="devouredBurgers"></ul>
+					<ul id="devouredBurgers" class='list-group'></ul>
 				</div>
 			</div>
 		</div>
@@ -71,10 +71,10 @@
 			var devCount = 1;
 			for(var i=0; i<res.length; i++){
 				if(res[i].devoured == 0){
-					$("#edibleBurgers").append("<li class='text-center' style='margin: 5px'>"+burgers+".) "+res[i].name+" <button class='devourBtn' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#edibleBurgers").append("<li class='text-center list-group-item' style='margin: 5px'>"+burgers+".) "+res[i].name+" <button class='devourBtn' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					burgers++;
 				} else {
-					$("#devouredBurgers").append("<li class='text-center' style='margin: 5px'>"+devCount+".) "+res[i].name+"<br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#devouredBurgers").append("<li class='text-center list-group-item' style='margin: 5px'>"+devCount+".) "+res[i].name+"<br><p style='color: gray'>"+res[i].date+"<p></li>");
 					devCount++;
 				}
 			}
