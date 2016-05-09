@@ -54,6 +54,13 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-12-md text-center">
+			<div class="footer">
+				<a href="http://rb-burger-app.herokuapp.com/api/burger" style="color: darkred; margin: 25px">API Link</a>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
@@ -81,7 +88,7 @@
 					$("#edibleBurgers").append("<li class='text-center list-group-item'><span style='color: darkred; font-size: 24px'>"+burgers+".) </span><span style='font-size: 24px;'>"+res[i].name+" </span><button class='devourBtn btn btn-danger' style='background-color: darkred' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					burgers++;
 				} else {
-					$("#devouredBurgers").append("<li class='text-center list-group-item' style='background-color: yellow'><span style='color: darkred; font-size: 24px'>"+devCount+".) </span><span style='font-size: 24px'>"+res[i].name+" </span><br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#devouredBurgers").append("<li class='text-center list-group-item'><span style='color: darkred; font-size: 24px'>"+devCount+".) </span><span style='font-size: 24px'>"+res[i].name+" </span><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					devCount++;
 				}
 			}
