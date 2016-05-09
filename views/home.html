@@ -71,10 +71,10 @@
 			var devCount = 1;
 			for(var i=0; i<res.length; i++){
 				if(res[i].devoured == 0){
-					$("#edibleBurgers").append("<li class='text-center' style='margin: 5px'>"+burgers+".) "+res[i].name+" <button class='devourBtn' data-id='"+res[i].id+"'>Devour it!</button></li>");
+					$("#edibleBurgers").append("<li class='text-center' style='margin: 5px'>"+burgers+".) "+res[i].name+" <button class='devourBtn' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					burgers++;
 				} else {
-					$("#devouredBurgers").append("<li class='text-center' style='margin: 5px'>"+devCount+".) "+res[i].name+"</li>");
+					$("#devouredBurgers").append("<li class='text-center' style='margin: 5px'>"+devCount+".) "+res[i].name+"<br><p style='color: gray'>"+res[i].date+"<p></li>");
 					devCount++;
 				}
 			}
