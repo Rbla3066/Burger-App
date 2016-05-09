@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Burger Hut</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron" style="background-color: darkred">
+				<h1 class="text-center" style="color: yellow">The Burger Hut</h1> 
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-lg-4 col-sm-4">
+			<img class="img-responsive" src="http://waybackburgers.com/wp-content/themes/wayback/images/the-triple-triple-burger.jpg">
+		</div>
+		<div class="col-md-4 col-lg-4 col-sm-4">
+			<div class='panel panel-default'>
+				<div class='panel-heading' style="background-color: darkred">
+					<h2 class='text-center' style="color: yellow">Eat dat Burger!</h2>
+				</div>
+				<div class="panel-body">
+					<ul id="edibleBurgers"></ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 col-lg-4 col-sm-4">
+			<div class='panel panel-default'>
+				<div class='panel-heading' style="background-color: darkred">
+					<h2 class='text-center' style="color: yellow">Devoured Burgers</h2>
+				</div>
+				<div class="panel-body">
+					<ul id="devouredBurgers"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12-md text-center" style="margin-top: 10px; margin-bottom: 10px">
+			<input id="burger" type="text">
+			<button id="submit" class="btn btn-danger">Add Burger</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	var url = window.location.origin;
+	$("#submit").click(function(){
+		var burger = {
+			name: $("#burger").val()
+		};
+		$.post(url + "/api/burger", burger, function(){
+			console.log("sent!");
+			getBurgers();
+		})
+	})
+	function getBurgers(){
+		$.ajax({url: url + "/api/burger", method: 'GET'})
+		.done(function(res){
+			$("#edibleBurgers").html("");
+			$("#devouredBurgers").html("");
+			var burgers = 1;
+			var devCount = 1;
+			for(var i=0; i<res.length; i++){
+				if(res[i].devoured == 0){
+					$("#edibleBurgers").append("<li class='text-center' style='margin: 5px'>"+burgers+".) "+res[i].name+" <button class='devourBtn' data-id='"+res[i].id+"'>Devour it!</button></li>");
+					burgers++;
+				} else {
+					$("#devouredBurgers").append("<li class='text-center' style='margin: 5px'>"+devCount+".) "+res[i].name+"</li>");
+					devCount++;
+				}
+			}
+		});
+	};
+	$("body").on("click", ".devourBtn", function(){
+		var id = {
+			id: $(this).data("id")
+		}
+		$.post(url + "/api/devour", id, function(){
+			console.log("devoured");
+			getBurgers();
+		})
+	});
+	getBurgers();
+</script>
