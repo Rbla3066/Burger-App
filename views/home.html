@@ -78,10 +78,10 @@
 			var devCount = 1;
 			for(var i=0; i<res.length; i++){
 				if(res[i].devoured == 0){
-					$("#edibleBurgers").append("<li class='text-center list-group-item' style='backgroun-color: yellow'><span style='color: darkred; font-size: 24px'>"+burgers+".) </span><span style='font-size: 20px'"+res[i].name+" </span><button class='devourBtn btn btn-default' style='background-color: darkred' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#edibleBurgers").append("<li class='text-center list-group-item' style='backgroun-color: yellow'><span style='color: darkred; font-size: 24px'>"+burgers+".) </span><span style='font-size: 20px;'>"+res[i].name+" </span><button class='devourBtn btn btn-danger' style='background-color: darkred' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					burgers++;
 				} else {
-					$("#devouredBurgers").append("<li class='text-center list-group-item' style='backgroun-color: yellow'><span style='color: darkred; font-size: 24px'>"+devCount+".) </span><span style='font-size: 20px'"+res[i].name+" </span><br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#devouredBurgers").append("<li class='text-center list-group-item' style='backgroun-color: yellow'><span style='color: darkred; font-size: 24px'>"+devCount+".) </span><span style='font-size: 20px'>"+res[i].name+" </span><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					devCount++;
 				}
 			}
