@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Burger Hut</title>
+	<title>Burger Hub</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron" style="background-color: darkred">
-				<h1 class="text-center" style="color: yellow">The Burger Hut</h1> 
+				<h1 class="text-center" style="color: yellow">The Burger Hub <span style="color: yellow" class="glyphicon glyphicon-thumbs-up"></span></h1> 
 			</div>
 		</div>
 	</div>
@@ -43,8 +43,15 @@
 	</div>
 	<div class="row">
 		<div class="col-12-md text-center" style="margin-top: 10px; margin-bottom: 10px">
-			<input id="burger" type="text">
-			<button id="submit" class="btn btn-danger">Add Burger</button>
+			<div class='panel panel-default'>
+				<div class='panel-heading' style="background-color: darkred">
+					<h2 class='text-center' style="color: yellow">Add your own burger!</h2>
+				</div>
+				<div class="panel-body">
+					<input id="burger" style="height: 35px; width: 250px" type="text">
+					<button id="submit" class="btn btn-danger" style="background-color: darkred">Add Burger</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -71,10 +78,10 @@
 			var devCount = 1;
 			for(var i=0; i<res.length; i++){
 				if(res[i].devoured == 0){
-					$("#edibleBurgers").append("<li class='text-center list-group-item' style='margin: 5px'>"+burgers+".) "+res[i].name+" <button class='devourBtn' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#edibleBurgers").append("<li class='text-center list-group-item' style='backgroun-color: yellow'><span style='color: darkred; font-size: 24px'>"+burgers+".) </span><span style='font-size: 20px'"+res[i].name+" </span><button class='devourBtn' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					burgers++;
 				} else {
-					$("#devouredBurgers").append("<li class='text-center list-group-item' style='margin: 5px'>"+devCount+".) "+res[i].name+"<br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#devouredBurgers").append("<li class='text-center list-group-item' style='backgroun-color: yellow'><span style='color: darkred; font-size: 24px'>"+devCount+".) </span><span style='font-size: 20px'"+res[i].name+" </span><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					devCount++;
 				}
 			}
