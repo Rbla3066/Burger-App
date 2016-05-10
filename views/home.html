@@ -88,7 +88,7 @@
 					$("#edibleBurgers").append("<li class='text-center list-group-item'><span style='color: darkred; font-size: 24px'>"+burgers+".) </span><span style='font-size: 24px;'>"+res[i].name+" </span><button class='devourBtn btn btn-danger' style='background-color: darkred' data-id='"+res[i].id+"'>Devour it!</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					burgers++;
 				} else {
-					$("#devouredBurgers").append("<li class='text-center list-group-item'><span style='color: darkred; font-size: 24px'>"+devCount+".) </span><span style='font-size: 24px'>"+res[i].name+" </span><br><p style='color: gray'>"+res[i].date+"<p></li>");
+					$("#devouredBurgers").append("<li class='text-center list-group-item'><span style='color: darkred; font-size: 24px'>"+devCount+".) </span><span style='font-size: 24px'>"+res[i].name+" </span><button class='deleteBtn btn btn-danger' style='background-color: darkred' data-id='"+res[i].id+"'>X</button><br><p style='color: gray'>"+res[i].date+"<p></li>");
 					devCount++;
 				}
 			}
@@ -103,5 +103,14 @@
 			getBurgers();
 		})
 	});
+	$("body").on("click", ".deleteBtn", function(){
+		var id = {
+			id: $(this).data("id")
+		}
+		$.post(url + "/api/delete", id, function(){
+			console.log("deleted");
+			getBurgers();
+		})
+	})
 	getBurgers();
 </script>
